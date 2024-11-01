@@ -5,8 +5,6 @@ Anggota:
 3. Rainhard Januardo Simamora (80970)
 4. Muhammad Daffa Rayyanda (82247)
 
-Link Video:
-
 Deskripsi singkat tentang aplikasi:
 Aplikasi Bernama Ruang Siswa. Ruang siswa adalah aplikasi E-learning inovatif yang dirancang untuk siswa SMA yang menyediakan mata pelajaran seperti Fisika, Kimia, dan Biologi. Aplikasi ini mencakup fitur pembelajaran AR, yang memberikan pengalaman pendidikan yang mendalam untuk membantu siswa memahami konsep yang kompleks dengan lebih efektif.
 
