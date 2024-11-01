@@ -24,4 +24,7 @@ Catatan Tambahan:
 1. Asset Book dan Paper diambil dari link Google Drive, Saat membuka kedua halaman tersebut user akan masuk ke Google Drive.
 2. Asset Chapter (nama Chapter, link YouTube) diambil dari firebase
 
+Link Video
+
+https://github.com/user-attachments/assets/602e59d4-f5dc-4e7d-acd6-f1b2a51b3814
 
