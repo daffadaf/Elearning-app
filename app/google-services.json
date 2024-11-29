@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "636421134223",
-    "project_id": "elearningapp-d8c38",
-    "storage_bucket": "elearningapp-d8c38.appspot.com"
+    "project_number": "544700569540",
+    "firebase_url": "https://elearningapp-926c3-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "elearningapp-926c3",
+    "storage_bucket": "elearningapp-926c3.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:636421134223:android:7afaa5edda0d6df5d95dfa",
+        "mobilesdk_app_id": "1:544700569540:android:b87d33e07d28759e8bb691",
         "android_client_info": {
           "package_name": "com.elearningapp"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDumFQVmInV9HkqKvOijQaxl48BDBbNJcw"
+          "current_key": "AIzaSyCmuDdcNSo-UIf1CZTbBeuMp6cbW5voktg"
         }
       ],
       "services": {

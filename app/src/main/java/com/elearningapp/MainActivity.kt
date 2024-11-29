@@ -20,6 +20,8 @@ import com.elearningapp.ui.views.screens.content.VideoLessons
 import com.elearningapp.ui.views.screens.dashboard.AboutUsScreen
 import com.elearningapp.ui.views.screens.dashboard.Dashboard
 import com.elearningapp.ui.views.screens.splashscreen.SplashScreen
+import com.elearningapp.ui.views.screens.auth.LoginSignUpScreen
+import com.google.firebase.auth.FirebaseAuth
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
@@ -34,12 +36,14 @@ class MainActivity : ComponentActivity() {
                 ) {
                     FirebaseApp.initializeApp(this)
                     val navController = rememberNavController()
-                    val context = applicationContext
-                    val lifecycleOwner = this
-                    NavHost(navController = navController, startDestination = "splash_screen") {
+
+                    NavHost(navController = navController, startDestination = "login_signup_screen") {
 
                         composable("splash_screen") {
                             SplashScreen(navController)
+                        }
+                        composable("login_signup_screen") {
+                            LoginSignUpScreen(navController)
                         }
                         composable("main_screen") {
                             Dashboard(navController)
