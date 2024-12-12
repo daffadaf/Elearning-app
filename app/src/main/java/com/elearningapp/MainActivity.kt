@@ -59,20 +59,26 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+
+                    // Setup Navigation and Screens
                     NavHost(navController = navController, startDestination = "splash_screen") {
 
+                        // Splash Screen
                         composable("splash_screen") {
                             SplashScreen(navController)
                         }
 
+                        // Login Screen - Google Sign In
                         composable("login_screen") {
                             GoogleSignInScreen { startGoogleSignIn() }
                         }
 
+                        // Main Dashboard Screen after login
                         composable("main_screen") {
                             Dashboard(navController)
                         }
 
+                        // Other screens with parameters passed
                         composable("lessons/{subject}") { backStackEntry ->
                             val subject = backStackEntry.arguments?.getString("subject")
                             if (subject != null) {
@@ -120,7 +126,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("about_us") {
-                            AboutUsScreen(navController) // Passing the navController here
+                            AboutUsScreen(navController) // Passing navController here
                         }
                     }
                 }
