@@ -1,5 +1,6 @@
 package com.elearningapp
 
+
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -53,6 +54,7 @@ class MainActivity : ComponentActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         setContent {
+            val navController = rememberNavController()
             ELearningAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -158,8 +160,9 @@ class MainActivity : ComponentActivity() {
                     setContent {
                         val navController = rememberNavController()
                         Surface(modifier = Modifier.fillMaxSize()) {
-                            NavHost(navController = navController, startDestination = "main_screen") {
-                                composable("main_screen") { Dashboard(navController) }
+
+                            NavHost(navController = navController, startDestination = "dashboard") {
+                                composable("dashboard") { Dashboard(navController) }
                             }
                         }
                     }
