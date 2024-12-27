@@ -42,13 +42,6 @@ fun SignUpScreen(navController: NavController) {
 
         Text("Sign Up", fontSize = 20.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(8.dp))
-        Text(
-            "Already have an account? Login",
-            color = Color.Blue,
-            modifier = Modifier.clickable { navController.navigate("login_screen") }
-        )
-
-        Spacer(Modifier.height(16.dp))
 
         TextField(
             value = email,
@@ -67,6 +60,14 @@ fun SignUpScreen(navController: NavController) {
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
             modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(Modifier.height(16.dp))
+
+        Text(
+            "Already have an account? Login",
+            color = Color.Blue,
+            modifier = Modifier.clickable { navController.navigate("login_screen") }
         )
 
         Spacer(Modifier.height(16.dp))

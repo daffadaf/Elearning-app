@@ -2,19 +2,21 @@ package com.elearningapp.ui.views.screens.dashboard
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Book
+import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,113 +29,191 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.elearningapp.R
+import com.elearningapp.ui.theme.blue
 
 @Composable
-fun AboutUsScreen(navController: NavHostController) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        Column(
+fun AboutUsScreen(navController: NavController) {
+    var selectedTab by remember { mutableStateOf(3) } // Default tab for About Us is 3.
+
+    Scaffold(
+        bottomBar = {
+            BottomNavigation(
+                backgroundColor = Color.White,
+                elevation = 8.dp
+            ) {
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            Icons.Filled.Home,
+                            contentDescription = "Home",
+                            tint = if (selectedTab == 0) blue else Color.Gray
+                        )
+                    },
+                    label = { Text("Home", color = if (selectedTab == 0) blue else Color.Gray) },
+                    selected = selectedTab == 0,
+                    onClick = {
+                        if (selectedTab != 0) {
+                            selectedTab = 0
+                            navController.navigate("dashboard") { // Correct route here
+                                popUpTo("dashboard") { inclusive = true } // Prevents multiple instances of the screen
+                            }
+                        }
+                    }
+                )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            Icons.Filled.Book,
+                            contentDescription = "Books",
+                            tint = if (selectedTab == 1) blue else Color.Gray
+                        )
+                    },
+                    label = { Text("Books", color = if (selectedTab == 1) blue else Color.Gray) },
+                    selected = selectedTab == 1,
+                    onClick = {
+                        selectedTab = 1
+                        navController.navigate("books")
+                    }
+                )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            Icons.Filled.Description,
+                            contentDescription = "Papers",
+                            tint = if (selectedTab == 2) blue else Color.Gray
+                        )
+                    },
+                    label = { Text("Papers", color = if (selectedTab == 2) blue else Color.Gray) },
+                    selected = selectedTab == 2,
+                    onClick = {
+                        selectedTab = 2
+                        val link = "https://drive.google.com/drive/folders/1eC3W8VhgiFHp6VY0LPkff4FX6QZY_Fbs?usp=drive_link"
+                        navController.navigate(
+                            "video_lesson/${java.net.URLEncoder.encode(link, java.nio.charset.StandardCharsets.UTF_8.toString())}"
+                        )
+                    }
+                )
+                BottomNavigationItem(
+                    icon = {
+                        Icon(
+                            Icons.Filled.Info,
+                            contentDescription = "About Us",
+                            tint = if (selectedTab == 3) blue else Color.Gray
+                        )
+                    },
+                    label = { Text("About", color = if (selectedTab == 3) blue else Color.Gray) },
+                    selected = selectedTab == 3,
+                    onClick = { selectedTab = 3 }
+                )
+            }
+        }
+    ) { paddingValues ->
+        Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
-                .background(Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(Color.White)
+                .padding(paddingValues)
         ) {
-            // Text Judul
-            Text(
-                text = stringResource(id = R.string.judul),
-                style = TextStyle(
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black
-                ),
-                textAlign = TextAlign.Center
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-
-            // Text place
-            Text(
-                text = stringResource(id = R.string.place),
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black
-                ),
-                textAlign = TextAlign.Center
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Text Anggota Tim
-            Text(
-                text = stringResource(id = R.string.anggotaTim),
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    color = Color.Black,
-                ),
-                textAlign = TextAlign.Center
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Row for first two images
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.kevin),
-                    contentDescription = "About Us Image 1",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(Color.Gray)
+                // Text Judul
+                Text(
+                    text = stringResource(id = R.string.judul),
+                    style = TextStyle(
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    ),
+                    textAlign = TextAlign.Center
                 )
+                Spacer(modifier = Modifier.height(20.dp))
 
-                Image(
-                    painter = painterResource(id = R.drawable.genadi),
-                    contentDescription = "About Us Image 2",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(Color.Gray)
+                // Text Place
+                Text(
+                    text = stringResource(id = R.string.place),
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    ),
+                    textAlign = TextAlign.Center
                 )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Text Anggota Tim
+                Text(
+                    text = stringResource(id = R.string.anggotaTim),
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        color = Color.Black
+                    ),
+                    textAlign = TextAlign.Center
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Row for first two images
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.kevin),
+                        contentDescription = "About Us Image 1",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(CircleShape)
+                            .background(Color.Gray)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.drawable.genadi),
+                        contentDescription = "About Us Image 2",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(CircleShape)
+                            .background(Color.Gray)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Row for next two images
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.daffa),
+                        contentDescription = "About Us Image 3",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(CircleShape)
+                            .background(Color.Gray)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.drawable.rainhard),
+                        contentDescription = "About Us Image 4",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clip(CircleShape)
+                            .background(Color.Gray)
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
             }
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Row for next two images
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.daffa),
-                    contentDescription = "About Us Image 3",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(Color.Gray)
-                )
-
-                Image(
-                    painter = painterResource(id = R.drawable.rainhard),
-                    contentDescription = "About Us Image 4",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .background(Color.Gray)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

@@ -60,11 +60,7 @@ fun LoginScreen(navController: NavController) {
         // Title and navigation to SignUpScreen
         Text("Login", fontSize = 20.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(8.dp))
-        Text(
-            "Haven't made an account? Sign Up",
-            color = Color.Blue,
-            modifier = Modifier.clickable { navController.navigate("signup_screen") }
-        )
+
 
         Spacer(Modifier.height(16.dp))
 
@@ -99,6 +95,12 @@ fun LoginScreen(navController: NavController) {
             Text("Forgot Password?", color = Color.Blue, modifier = Modifier.clickable { /* Handle Forgot Password */ })
         }
 
+        Spacer(Modifier.height(16.dp))
+        Text(
+            "Haven't made an account? Sign Up",
+            color = Color.Blue,
+            modifier = Modifier.clickable { navController.navigate("signup_screen") }
+        )
         Spacer(Modifier.height(16.dp))
 
         // Login Button

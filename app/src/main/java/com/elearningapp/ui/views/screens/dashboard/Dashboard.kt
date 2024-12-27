@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -127,6 +128,21 @@ fun BottomNavigationBar(selectedTab: Int, navController: NavController, onTabSel
             onClick = {
                 onTabSelected(3)
                 navController.navigate("about_us")
+            }
+        )
+        BottomNavigationItem(
+            icon = {
+                Icon(
+                    Icons.Filled.Menu,
+                    contentDescription = "Backend",
+                    tint = if (selectedTab == 4) blue else Color.Gray
+                )
+            },
+            label = { Text("Lessons", color = if (selectedTab == 4) blue else Color.Gray) },
+            selected = selectedTab == 4,
+            onClick = {
+                onTabSelected(4)
+                navController.navigate("LessonForm")
             }
         )
     }
