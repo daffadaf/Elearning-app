@@ -56,7 +56,7 @@ fun SplashScreen(navController: NavHostController) {
             )
         }
         delay(2000L) // Wait for 2 seconds
-        navController.navigate("main_screen") {
+        navController.navigate("login_screen") {
             popUpTo("splash_screen") { inclusive = true }
         }
     }

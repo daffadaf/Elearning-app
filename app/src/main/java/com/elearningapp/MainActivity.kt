@@ -58,7 +58,10 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             Surface(modifier = Modifier.fillMaxSize()) {
-                NavHost(navController = navController, startDestination = "login_screen") {
+                NavHost(navController = navController, startDestination = "splash_screen") {
+                    composable("splash_screen") {
+                        SplashScreen(navController)
+                    }
                     // Navigation for LoginScreen
                     composable("login_screen") {
                         LoginScreen(navController = navController)
@@ -66,9 +69,6 @@ class MainActivity : ComponentActivity() {
                     // Navigation for SignUpScreen
                     composable("signup_screen") {
                         SignUpScreen(navController = navController)
-                    }
-                    composable("splash_screen") {
-                        SplashScreen(navController)
                     }
                     // Navigation for Dashboard
                     composable("dashboard") {
