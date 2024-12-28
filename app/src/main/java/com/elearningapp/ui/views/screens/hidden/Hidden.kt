@@ -10,41 +10,24 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
-
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.google.firebase.Firebase
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.database
-import com.google.firebase.storage.storage
-
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 // Data class to represent your data model
 data class Lesson(
@@ -52,13 +35,12 @@ data class Lesson(
     val lessonName: String,
     val numberOfLessons: String,
     val duration: String,
-    val videoLinks: List<String>, // Change to List<String>
+    val videoLinks: List<String>,
     val imageUrl: String,
     val threeDAssets: List<String>,
     val chapterNumber: String,
     val weightage: String
 )
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,81 +60,165 @@ fun LessonForm(
     onThreeDAssetsChange: (List<String>) -> Unit,
     chapterNumber: String,
     onChapterNumberChange: (String) -> Unit,
-    weightage:String,
+    weightage: String,
     onWeightageChange: (String) -> Unit,
 ) {
     var imageUri by remember { mutableStateOf<Uri?>(null) }
     val context = LocalContext.current
     val bitmap = remember { mutableStateOf<Bitmap?>(null) }
-    val scrollState1 = rememberScrollState()
+    val scrollState = rememberScrollState()
 
-    val launcher =
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
-            imageUri = uri
-        }
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        imageUri = uri
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState1)
-            .padding(8.dp)
-            .background(Color.White)
+            .background(Color(0xFFF5F5F5))
+            .verticalScroll(scrollState)
+            .padding(16.dp)
     ) {
-        TextField(
+        Text(
+            text = "Lesson Details",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        OutlinedTextField(
             value = subjectName,
             onValueChange = onSubjectNameChange,
-            label = { Text("Subject Name") }
+            label = { Text("Subject Name") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
         )
-        TextField(
-            value = lessonName,
-            onValueChange = onLessonNameChange,
-            label = { Text("Lesson Name") }
-        )
-        TextField(
-            value = chapterNumber,
-            onValueChange = onChapterNumberChange,
-            label = { Text("Chapter Number") }
-        )
-        TextField(
-            value = weightage,
-            onValueChange = onWeightageChange,
-            label = { Text("Weightage") }
-        )
-        TextField(
-            value = numberOfLessons,
-            onValueChange = onNumberOfLessonsChange,
-            label = { Text("Number of Lessons") }
-        )
-        TextField(
-            value = duration,
-            onValueChange = onDurationChange,
-            label = { Text("Duration") }
-        )
+
         Spacer(modifier = Modifier.height(8.dp))
 
-        LazyColumn(modifier =Modifier.height(100.dp)
-            .fillMaxWidth()) {
-            items(videoLinks.size) { index ->
-                TextField(
-                    value = videoLinks.getOrNull(index) ?: "",
-                    onValueChange = { newValue ->
-                        val updatedLinks = videoLinks.toMutableList()
-                        if (index < updatedLinks.size) {
-                            updatedLinks[index] = newValue
-                        } else {
-                            updatedLinks.add(newValue)
-                        }
-                        onVideoLinksChange(updatedLinks)
-                    },
-                    label = { Text("Video Link ${index + 1}") }
-                )
-            }
-        }
+        OutlinedTextField(
+            value = lessonName,
+            onValueChange = onLessonNameChange,
+            label = { Text("Lesson Name") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+
         Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = chapterNumber,
+            onValueChange = onChapterNumberChange,
+            label = { Text("Chapter Number") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = weightage,
+            onValueChange = onWeightageChange,
+            label = { Text("Weightage") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = numberOfLessons,
+            onValueChange = onNumberOfLessonsChange,
+            label = { Text("Number of Lessons") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = duration,
+            onValueChange = onDurationChange,
+            label = { Text("Duration") },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Video Links",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        videoLinks.forEachIndexed { index, link ->
+            OutlinedTextField(
+                value = link,
+                onValueChange = { newValue ->
+                    val updatedLinks = videoLinks.toMutableList()
+                    updatedLinks[index] = newValue
+                    onVideoLinksChange(updatedLinks)
+                },
+                label = { Text("Video Link ${index + 1}") },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        Button(
+            onClick = {
+                val updatedLinks = videoLinks.toMutableList()
+                updatedLinks.add("")
+                onVideoLinksChange(updatedLinks)
+            },
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text("Add Video Link")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "3D Assets",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        threeDAssets.forEachIndexed { index, asset ->
+            OutlinedTextField(
+                value = asset,
+                onValueChange = { newValue ->
+                    val updatedAssets = threeDAssets.toMutableList()
+                    updatedAssets[index] = newValue
+                    onThreeDAssetsChange(updatedAssets)
+                },
+                label = { Text("3D Asset URL ${index + 1}") },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        Button(
+            onClick = {
+                val updatedAssets = threeDAssets.toMutableList()
+                updatedAssets.add("")
+                onThreeDAssetsChange(updatedAssets)
+            },
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text("Add 3D Asset")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         imageUri?.let {
             if (Build.VERSION.SDK_INT < 28) {
-                bitmap.value = MediaStore.Images
-                    .Media.getBitmap(context.contentResolver, it)
+                bitmap.value = MediaStore.Images.Media.getBitmap(context.contentResolver, it)
             } else {
                 val source = ImageDecoder.createSource(context.contentResolver, it)
                 bitmap.value = ImageDecoder.decodeBitmap(source)
@@ -164,73 +230,44 @@ fun LessonForm(
                     contentDescription = null,
                     modifier = Modifier
                         .size(200.dp)
-                        .padding(20.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .padding(16.dp)
                 )
             }
         }
-        Spacer(modifier = Modifier.height(8.dp))
-
-        LazyColumn(modifier =Modifier.height(100.dp)
-            .fillMaxWidth()) {
-            items(threeDAssets.size) { index ->
-                TextField(
-                    value = threeDAssets.getOrNull(index) ?: "",
-                    onValueChange = { newValue ->
-                        val updatedAssets = threeDAssets.toMutableList()
-                        if (index < updatedAssets.size) {
-                            updatedAssets[index] = newValue
-                        } else {
-                            updatedAssets.add(newValue)
-                        }
-                        onThreeDAssetsChange(updatedAssets)
-                    },
-                    label = { Text("3D Asset URL ${index + 1}") }
-                )
-            }
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // Button to add a new TextField
-        Button(
-            onClick = {
-                val updatedAssets = threeDAssets.toMutableList()
-                updatedAssets.add("")
-                onThreeDAssetsChange(updatedAssets)
-            },
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
-            Text("Add 3D Asset URL")
-        }
-        Spacer(modifier = Modifier.height(8.dp))
 
         Button(onClick = { launcher.launch("image/*") }) {
-            Text(text = "Pick Image")
+            Text("Pick Image")
         }
-        Spacer(modifier = Modifier.height(8.dp))
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Button(
             onClick = {
-                val updatedLinks = videoLinks.toMutableList()
-                updatedLinks.add("")
-                onVideoLinksChange(updatedLinks)
-            },
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
-            Text("Add Video Link")
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        imageUri?.let { uri ->
-            Button(onClick = {
-                uploadImageToFirebase(uri) { imageUrl ->
-                    val lesson = Lesson(subjectName, lessonName, numberOfLessons, duration, videoLinks, imageUrl,threeDAssets,chapterNumber, weightage) // Change videoLink to videoLinks
-                    onSubmit(lesson)
+                imageUri?.let { uri ->
+                    uploadImageToFirebase(uri) { imageUrl ->
+                        val lesson = Lesson(
+                            subjectName,
+                            lessonName,
+                            numberOfLessons,
+                            duration,
+                            videoLinks,
+                            imageUrl,
+                            threeDAssets,
+                            chapterNumber,
+                            weightage
+                        )
+                        onSubmit(lesson)
+                    }
                 }
-            }) {
-                Text("Submit")
-            }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Submit")
         }
     }
-
 }
+
 private fun uploadImageToFirebase(uri: Uri, onComplete: (String) -> Unit) {
     val storage = Firebase.storage
     val storageRef = storage.reference
@@ -238,55 +275,35 @@ private fun uploadImageToFirebase(uri: Uri, onComplete: (String) -> Unit) {
 
     val uploadTask = imagesRef.putFile(uri)
 
-    uploadTask.addOnSuccessListener { _ ->
-        // Get the download URL
+    uploadTask.addOnSuccessListener {
         imagesRef.downloadUrl.addOnSuccessListener { uri ->
             onComplete(uri.toString())
-        }.addOnFailureListener {
-            // Handle failures
         }
-    }.addOnFailureListener { exception ->
-        // Handle unsuccessful uploads
     }
 }
-// Usage
+
 @Composable
 fun MyApp() {
     var subjectName by remember { mutableStateOf("") }
     var chapterNumber by remember { mutableStateOf("") }
     var weightage by remember { mutableStateOf("") }
-
     var lessonName by remember { mutableStateOf("") }
     var numberOfLessons by remember { mutableStateOf("") }
     var duration by remember { mutableStateOf("") }
-    var videoLinks by remember { mutableStateOf(listOf<String>()) } // Define videoLinks as a mutableStateOf<List<String>>()
+    var videoLinks by remember { mutableStateOf(listOf<String>()) }
     var threeDAssets by remember { mutableStateOf(listOf<String>()) }
 
     val context = LocalContext.current
-
     var submittedLesson by remember { mutableStateOf<Lesson?>(null) }
 
-    // Write data to Firebase Realtime Database
     submittedLesson?.let { lesson ->
         Firebase.database.reference.child("lessons").child(lesson.lessonName).setValue(lesson)
             .addOnSuccessListener {
-                // Show toast message if data is uploaded successfully
                 Toast.makeText(context, "Data uploaded successfully", Toast.LENGTH_SHORT).show()
-
-                // Reset all text field values
-                //subjectName = ""
-                lessonName = ""
-                numberOfLessons = ""
-                duration = ""
-                videoLinks = emptyList() // Reset videoLinks to an empty list
-                threeDAssets= emptyList()
             }
             .addOnFailureListener { exception ->
-                // Handle error if data upload fails
                 Toast.makeText(context, "Failed to upload data: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
-
-        // Reset submittedLesson after writing to database
         submittedLesson = null
     }
 
@@ -307,11 +324,9 @@ fun MyApp() {
         onChapterNumberChange = { chapterNumber = it },
         weightage = weightage,
         onWeightageChange = { weightage = it },
-        onSubmit = { submittedLesson = it } // Include the onSubmit parameter
+        onSubmit = { submittedLesson = it }
     )
-
 }
-// Function to fetch data from Firebase
 
 @Preview(showBackground = true)
 @Composable

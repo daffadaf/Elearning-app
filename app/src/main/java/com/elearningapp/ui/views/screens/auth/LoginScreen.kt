@@ -4,15 +4,20 @@ import android.content.Context
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -49,59 +54,77 @@ fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFEDEFF1))
-            .padding(16.dp),
+            .background(Color.White)
+            .padding(horizontal = 32.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Logo
-        Text("RuangSiswa", fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
+        Image(
+            painter = painterResource(id = R.drawable.ruangsiswa),
+            contentDescription = "RuangSiswa Logo",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(bottom = 16.dp)
+        )
 
-        // Title and navigation to SignUpScreen
-        Text("Login", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-        Spacer(Modifier.height(8.dp))
+        // Title
+        Text(
+            "RuangSiswa",
+            fontSize = 28.sp,
+            fontWeight = FontWeight.ExtraBold,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
 
-
-        Spacer(Modifier.height(16.dp))
+        Text(
+            "Login to continue",
+            fontSize = 20.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(bottom = 25.dp)
+        )
 
         // Email Input
-        TextField(
+        OutlinedTextField(
             value = email,
             onValueChange = { email = it },
             label = { Text("Email Address") },
+            leadingIcon = { Icon(Icons.Default.Email, contentDescription = "Email Icon") },
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next),
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(16.dp))
 
         // Password Input
-        TextField(
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },
             label = { Text("Password") },
+            leadingIcon = { Icon(Icons.Default.Lock, contentDescription = "Password Icon") },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(Modifier.height(8.dp))
-
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        // Forgot Password and Remember Me Row
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(checked = rememberMe, onCheckedChange = { rememberMe = it })
-                Text("Remember Me")
+                Text("Remember Me", style = MaterialTheme.typography.bodyMedium)
             }
-            Text("Forgot Password?", color = Color.Blue, modifier = Modifier.clickable { /* Handle Forgot Password */ })
+            Text(
+                "Forgot Password?",
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.clickable { /* Handle Forgot Password */ }
+            )
         }
 
-        Spacer(Modifier.height(16.dp))
-        Text(
-            "Haven't made an account? Sign Up",
-            color = Color.Blue,
-            modifier = Modifier.clickable { navController.navigate("signup_screen") }
-        )
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(24.dp))
 
         // Login Button
         Button(
@@ -115,24 +138,50 @@ fun LoginScreen(navController: NavController) {
                         }
                     }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary)
         ) {
-            Text("Login")
+            Text("Login", style = MaterialTheme.typography.labelLarge)
         }
 
         Spacer(Modifier.height(16.dp))
 
-        Text("Or", fontSize = 14.sp)
+        // Divider with "Or"
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Divider(modifier = Modifier.weight(1f))
+            Text("OR", modifier = Modifier.padding(horizontal = 8.dp), color = MaterialTheme.colorScheme.onBackground)
+            Divider(modifier = Modifier.weight(1f))
+        }
 
         Spacer(Modifier.height(16.dp))
 
         // Google Sign-In Button
         Button(
-            onClick = { startGoogleSignIn(googleSignInLauncher, context) },
-            modifier = Modifier.fillMaxWidth()
+            onClick = { /* Implement Google Sign-In */ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary)
         ) {
-            Text("Continue with Google")
+            Icon(painterResource(R.drawable.google), contentDescription = "Google Icon")
+            Spacer(Modifier.width(8.dp))
+            Text("Continue with Google", style = MaterialTheme.typography.labelLarge)
         }
+
+        Spacer(Modifier.height(24.dp))
+
+        // Navigate to Sign Up
+        Text(
+            "Don't have an account? Sign Up",
+            color = MaterialTheme.colorScheme.primary,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.clickable { navController.navigate("signup_screen") }
+        )
     }
 }
 
