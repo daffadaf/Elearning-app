@@ -102,12 +102,13 @@ fun SignUpScreen(navController: NavController) {
         // Sign Up Button
         Button(
             onClick = {
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            navController.navigate("dashboard")
+                            Toast.makeText(context, "Sign up successful!", Toast.LENGTH_SHORT).show()
+                            navController.navigate("login_screen")
                         } else {
-                            Toast.makeText(context, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Sign up Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
             },
