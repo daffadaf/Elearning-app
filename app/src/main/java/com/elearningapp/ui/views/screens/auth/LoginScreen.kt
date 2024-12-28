@@ -17,14 +17,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.elearningapp.R
+import com.elearningapp.ui.views.screens.hidden.MyApp
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -213,4 +216,12 @@ fun firebaseAuthWithGoogle(
                 Toast.makeText(context, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
+}
+
+@Preview(showBackground = true, name = "Login Screen Preview")
+@Composable
+fun LoginScreenPreview() {
+    MaterialTheme {
+        LoginScreen(navController = NavController(LocalContext.current))
+    }
 }
