@@ -9,10 +9,14 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AdminPanelSettings
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -27,11 +31,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.elearningapp.R
 import com.elearningapp.ui.theme.blue
+import com.elearningapp.ui.theme.lightBlue
 
 @Composable
 fun AboutUsScreen(navController: NavController) {
@@ -213,7 +220,38 @@ fun AboutUsScreen(navController: NavController) {
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Button to navigate to LessonForm
+                // Button to navigate to LessonForm with icon
+                Button(
+                    onClick = {
+                        navController.navigate("LessonForm")
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = lightBlue)
+                ) {
+                    // Add the Icon to the Button
+                    Icon(
+                        Icons.Filled.AdminPanelSettings,
+                        contentDescription = "Halaman Admin",
+                        modifier = Modifier.padding(end = 8.dp)
+                    )
+                    Text(text = "Masuk Halaman Update Lesson")
+                }
+
+
+                Spacer(modifier = Modifier.height(16.dp))
             }
+
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewAboutUsScreen() {
+    AboutUsScreen(navController = rememberNavController()) // Use rememberNavController for preview
 }

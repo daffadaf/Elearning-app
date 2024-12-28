@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.elearningapp.ui.theme.lightBlue
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -80,8 +81,8 @@ fun LessonForm(
             .padding(16.dp)
     ) {
         Text(
-            text = "Lesson Details",
-            fontSize = 24.sp,
+            text = "Lesson Update",
+            fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
@@ -174,10 +175,13 @@ fun LessonForm(
                 updatedLinks.add("")
                 onVideoLinksChange(updatedLinks)
             },
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier.align(Alignment.End),
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
         ) {
             Text("Add Video Link")
         }
+
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -209,7 +213,9 @@ fun LessonForm(
                 updatedAssets.add("")
                 onThreeDAssetsChange(updatedAssets)
             },
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier.align(Alignment.End),
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
         ) {
             Text("Add 3D Asset")
         }
@@ -236,11 +242,30 @@ fun LessonForm(
             }
         }
 
-        Button(onClick = { launcher.launch("image/*") }) {
+        Text(
+            text = "Image",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        Button(
+            onClick = { launcher.launch("image/*") },
+            modifier = Modifier.align(Alignment.End),
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
+        ) {
             Text("Pick Image")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = "Submit Update Lesson",
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
 
         Button(
             onClick = {
@@ -261,7 +286,9 @@ fun LessonForm(
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.align(Alignment.End),
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
         ) {
             Text("Submit")
         }

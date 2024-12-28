@@ -28,7 +28,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.elearningapp.R
 import com.elearningapp.ui.theme.blue
-import com.elearningapp.ui.theme.darkblue
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

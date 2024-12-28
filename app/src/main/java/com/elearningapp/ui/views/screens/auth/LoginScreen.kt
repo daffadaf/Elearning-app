@@ -27,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.elearningapp.R
+import com.elearningapp.ui.theme.blue
+import com.elearningapp.ui.theme.lightBlue
+import com.elearningapp.ui.theme.white
 import com.elearningapp.ui.views.screens.hidden.MyApp
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -76,7 +79,7 @@ fun LoginScreen(navController: NavController) {
             "RuangSiswa",
             fontSize = 28.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colorScheme.primary,
+            color = blue,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
@@ -117,12 +120,22 @@ fun LoginScreen(navController: NavController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(checked = rememberMe, onCheckedChange = { rememberMe = it })
+                Checkbox(
+                    checked = rememberMe,
+                    onCheckedChange = { rememberMe = it },
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = Color.Blue, // Warna kotak saat checkbox dicentang
+                        uncheckedColor = Color.Gray, // Warna kotak saat checkbox tidak dicentang
+                        checkmarkColor = Color.White // Warna centang di dalam kotak
+                    )
+                )
                 Text("Remember Me", style = MaterialTheme.typography.bodyMedium)
             }
+
             Text(
                 "Forgot Password?",
-                color = MaterialTheme.colorScheme.primary,
+                color = lightBlue,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.clickable { /* Handle Forgot Password */ }
             )
         }
@@ -144,10 +157,15 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary)
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue), // Warna background tombol
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp) // Menambahkan shadow
         ) {
-            Text("Login", style = MaterialTheme.typography.labelLarge)
+            Text(
+                "Login",
+                style = MaterialTheme.typography.labelLarge.copy(color = Color.White) // Warna teks putih
+            )
         }
+
 
         Spacer(Modifier.height(16.dp))
 
@@ -165,23 +183,34 @@ fun LoginScreen(navController: NavController) {
 
         // Google Sign-In Button
         Button(
-            onClick = { /* Implement Google Sign-In */ },
+            onClick = { startGoogleSignIn(googleSignInLauncher, context) },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary)
+            colors = ButtonDefaults.buttonColors(containerColor = Color.White), // Warna background tombol putih
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp) // Menambahkan shadow
         ) {
-            Icon(painterResource(R.drawable.google), contentDescription = "Google Icon")
+            Icon(
+                painter = painterResource(id = R.drawable.google),
+                contentDescription = "Google Icon",
+                modifier = Modifier.size(24.dp), // Sesuaikan ukuran jika diperlukan
+                tint = Color.Unspecified // Memastikan warna asli ikon tidak diubah
+            )
             Spacer(Modifier.width(8.dp))
-            Text("Continue with Google", style = MaterialTheme.typography.labelLarge)
+            Text(
+                "Continue with Google",
+                style = MaterialTheme.typography.labelLarge.copy(color = Color.Black) // Warna teks hitam
+            )
         }
+
+
 
         Spacer(Modifier.height(24.dp))
 
         // Navigate to Sign Up
         Text(
             "Don't have an account? Sign Up",
-            color = MaterialTheme.colorScheme.primary,
+            color = lightBlue,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.clickable { navController.navigate("signup_screen") }
         )

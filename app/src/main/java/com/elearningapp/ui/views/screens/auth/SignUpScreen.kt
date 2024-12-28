@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.elearningapp.R
+import com.elearningapp.ui.theme.blue
+import com.elearningapp.ui.theme.lightBlue
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -57,14 +59,14 @@ fun SignUpScreen(navController: NavController) {
             style = MaterialTheme.typography.headlineLarge.copy(
                 fontSize = 28.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = MaterialTheme.colorScheme.primary
+                color = blue
             ),
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
         // Page Title
         Text(
-            "Sign Up",
+            "Create Account",
             fontSize = 20.sp,
             color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.padding(bottom = 25.dp)
@@ -100,32 +102,25 @@ fun SignUpScreen(navController: NavController) {
         // Sign Up Button
         Button(
             onClick = {
-                auth.createUserWithEmailAndPassword(email, password)
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(context, "Sign up successful!", Toast.LENGTH_SHORT).show()
-                            navController.navigate("login_screen")
+                            navController.navigate("dashboard")
                         } else {
-                            Toast.makeText(
-                                context,
-                                "Sign up failed: ${task.exception?.message}",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(context, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
-            shape = MaterialTheme.shapes.medium,
-            elevation = ButtonDefaults.elevatedButtonElevation()
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue), // Warna background tombol
+            elevation = ButtonDefaults.elevatedButtonElevation(12.dp) // Menambahkan shadow
+
         ) {
-            Text(
-                "Sign Up",
-                style = MaterialTheme.typography.labelLarge.copy(color = Color.White)
-            )
+            Text("Login", style = MaterialTheme.typography.labelLarge)
         }
+
 
         Spacer(Modifier.height(24.dp))
 
@@ -133,7 +128,7 @@ fun SignUpScreen(navController: NavController) {
         Text(
             text = "Already have an account? Login",
             style = MaterialTheme.typography.bodyMedium.copy(
-                color = MaterialTheme.colorScheme.primary,
+                color = lightBlue,
                 fontWeight = FontWeight.Bold
             ),
             modifier = Modifier.clickable { navController.navigate("login_screen") }

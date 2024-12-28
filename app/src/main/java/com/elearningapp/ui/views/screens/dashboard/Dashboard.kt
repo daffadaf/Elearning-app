@@ -130,21 +130,6 @@ fun BottomNavigationBar(selectedTab: Int, navController: NavController, onTabSel
                 navController.navigate("about_us")
             }
         )
-        BottomNavigationItem(
-            icon = {
-                Icon(
-                    Icons.Filled.Menu,
-                    contentDescription = "Backend",
-                    tint = if (selectedTab == 4) blue else Color.Gray
-                )
-            },
-            label = { Text("Lessons", color = if (selectedTab == 4) blue else Color.Gray) },
-            selected = selectedTab == 4,
-            onClick = {
-                onTabSelected(4)
-                navController.navigate("LessonForm")
-            }
-        )
     }
 }
 
