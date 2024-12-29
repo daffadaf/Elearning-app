@@ -75,15 +75,15 @@ class DashboardViewModel : ViewModel() {
             numberOfLessons = "6",
             duration = "3h 33m",
             videoLinks = listOf(
+                "https://youtu.be/pRLzqHAWTcs?si=mSljwl1RuR6Ct7Wg",
+                "https://youtu.be/tj2vdlJ3ozI?si=WAoYGTioxJDVTzmG",
+                "https://youtu.be/pjJHlWBQ9jk?si=60pXTUPxsYzfKmpl",
                 "https://youtu.be/GnirVEazGxk?si=_zyKYXOqbpzsZbJy",
                 "https://youtu.be/kkzb6VktnzM?si=cPyCZ7B1_RC4Ud89",
-                "https://youtu.be/HQqCGWxq41g?si=JL9WoHtNcItIZ0zP",
-                "https://youtu.be/DQ_sj6BG370?si=OSEwf4Os8HvK1-0q",
-                "https://youtu.be/4PizJRTDl2o?si=KAOMV1Sa9DATW_dk",
-                "https://youtu.be/CSewmimLiow?si=KCCqK4Y6DorNLPmK"
+                "https://youtu.be/HQqCGWxq41g?si=JL9WoHtNcItIZ0zP"
             ),
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/elearningapp-d8c38.appspot.com/o/lesson_images%2F1000021454?alt=media&token=ebb47e7a-eeb1-435b-b114-efd28dbfb820",
-            chapterNumber = "12",
+            chapterNumber = "6",
             weightage = "7"
         )
     )
@@ -96,12 +96,14 @@ class DashboardViewModel : ViewModel() {
             numberOfLessons = "6",
             duration = "4h 17m",
             videoLinks = listOf(
-                "https://youtu.be/RqIN6ad5xlM?si=fcT3Fazg0pzZhI_S",
-                "https://youtu.be/-yEOCMOTN8M?si=aZvfRMs5qExGBvXq",
-                "https://youtu.be/SEuIHcgVUgk?si=ASGYT183_0jSzXA7",
-                "https://youtu.be/1H1OM5ncbtc?si=j_03A6OexNLk5hLy",
-                "https://youtu.be/lloTlk49tMQ?si=IglUd-E_1yA_nIQz",
-                "https://youtu.be/exyXTbb5m34?si=IVY2a9I_Rn2wckM8"
+                "https://youtu.be/RqIN6ad5xlM?si=WuVPTIpsNIC_WWJA",
+                "https://youtu.be/RqIN6ad5xlM?si=MQW1vBPfwmSThLxj",
+                "https://youtu.be/-yEOCMOTN8M?si=ASlImq9P-Y6g0SBm",
+                "https://youtu.be/SEuIHcgVUgk?si=FgG0gdfzCDyfDpC0",
+                "https://youtu.be/1H1OM5ncbtc?si=wnra4cVZwaGR1EsN",
+                "https://youtu.be/lloTlk49tMQ?si=wtX1TsEbKgA-EncT",
+                "https://youtu.be/exyXTbb5m34?si=wj2DXF3qiZVSkk_K",
+                "https://youtu.be/ab8rgXFB0oA?si=A6hOkcEiVJZUO-hO"
             ),
             imageUrl = "https://firebasestorage.googleapis.com/v0/b/elearningapp-d8c38.appspot.com/o/lesson_images%2F1000023306?alt=media&token=56aa64c5-6e89-4a22-8db2-42395714b793",
             chapterNumber = "5",
@@ -142,9 +144,9 @@ class DashboardViewModel : ViewModel() {
         // Fetch image resources from API or other source
         // For demonstration purposes, I'll use hardcoded image resources
         _assessmentList.value=listOf(
-            Assessments(R.drawable.magneticfield, "Magnetic Fields due to Electric Current", 10, "20m"),
-            Assessments(R.drawable.respiration, "Respiration and Circulation", 10, "20m"),
-            Assessments(R.drawable.biomolecules, "Biomolecules", 10, "20m"),
+            Assessments(R.drawable.magneticfield, "Elektromagnetik", 10, "20m"),
+            Assessments(R.drawable.respiration, "Sistem Peredaran Darah Manusia", 10, "20m"),
+            Assessments(R.drawable.biomolecules, "Biomolekul", 10, "20m"),
             // Add more courses as needed
         )
     }
@@ -265,24 +267,24 @@ class DashboardViewModel : ViewModel() {
         _assetsList.value= listOf(
 
             //Biology
-            AssetsClass(assetName = "Human Heart", actualAssetName = "heart", chapterName = "Respiration and Circulation", subjectName = "Biology",chapterNumber =8),
-            AssetsClass(assetName = "Human Lungs", actualAssetName = "lungs", chapterName = "Respiration and Circulation", subjectName = "Biology",chapterNumber =8),
-            AssetsClass(assetName = "Human Brain", actualAssetName = "brain", chapterName = "Control and Co-ordination", subjectName = "Biology",chapterNumber =9),
-            AssetsClass(assetName = "Animal Cell ", actualAssetName = "cell", chapterName = "Control and Co-ordination", subjectName = "Biology",chapterNumber =9),
-            AssetsClass(assetName = "Human Cell", actualAssetName = "humancell", chapterName = "Control and Co-ordination", subjectName = "Biology",chapterNumber =9),
-            AssetsClass(assetName = "Digestive System", actualAssetName = "digestivesystem", chapterName = "Control and Co-ordination", subjectName = "Biology",chapterNumber =9),
-            AssetsClass(assetName = "DNA and RNA", actualAssetName = "dna", chapterName = "Biotechnology", subjectName = "Biology",chapterNumber =12),
+            AssetsClass(assetName = "Organ Jantung", actualAssetName = "heart", chapterName = "Sistem Peredaran Darah Manusia", subjectName = "Biology",chapterNumber =1),
+            AssetsClass(assetName = "Organ Paru-Paru", actualAssetName = "lungs", chapterName = "Sistem Pernapasan Manusia", subjectName = "Biology",chapterNumber =2),
+            AssetsClass(assetName = "Organ Pencernaan", actualAssetName = "digestivesystem", chapterName = "Sistem Pencernaan Manusia", subjectName = "Biology",chapterNumber =3),
+            AssetsClass(assetName = "Organ Otak", actualAssetName = "brain", chapterName = "Sistem Saraf Pusat Manusia", subjectName = "Biology",chapterNumber =4),
+            AssetsClass(assetName = "Sel Hewan ", actualAssetName = "cell", chapterName = "Struktur dan Fungsi Sel", subjectName = "Biology",chapterNumber =5),
+            AssetsClass(assetName = "Sel Manusia", actualAssetName = "humancell", chapterName = "Struktur dan Fungsi Sel", subjectName = "Biology",chapterNumber =5),
+            AssetsClass(assetName = "DNA dan RNA", actualAssetName = "dna", chapterName = "Biotechnology", subjectName = "Biology",chapterNumber =6),
 
             //Chemistry
-            AssetsClass(assetName = "NaCl", actualAssetName = "nacl", chapterName = "Solid State", subjectName = "Chemistry",chapterNumber =1),
-            AssetsClass(assetName = "Alpha Bond", actualAssetName = "alphabond", chapterName = "Halogen Derivatives", subjectName = "Chemistry", chapterNumber = 10),
-            AssetsClass(assetName = "Anti Bond", actualAssetName = "antibond", chapterName = "Halogen Derivatives", subjectName = "Chemistry", chapterNumber = 10),
-            AssetsClass(assetName = "Beryllium", actualAssetName = "beryllium", chapterName = "Transition and Inner transition Elements", subjectName = "Chemistry",chapterNumber =8),
-            AssetsClass(assetName = "Biomolecules", actualAssetName = "biomolecules", chapterName = "Biomolecules", subjectName = "Chemistry",chapterNumber =14),
+            AssetsClass(assetName = "NaCl", actualAssetName = "nacl", chapterName = "Natrium Klorida", subjectName = "Chemistry",chapterNumber =1),
+            AssetsClass(assetName = "Alpha Bond", actualAssetName = "alphabond", chapterName = "Turunan Halogen", subjectName = "Chemistry", chapterNumber = 2),
+            AssetsClass(assetName = "Anti Bond", actualAssetName = "antibond", chapterName = "Turunan Halogen", subjectName = "Chemistry", chapterNumber = 2),
+            AssetsClass(assetName = "Beryllium", actualAssetName = "beryllium", chapterName = "Golongan Transisi dan Transisi Dalam", subjectName = "Chemistry",chapterNumber =3),
+            AssetsClass(assetName = "Biomolekul", actualAssetName = "biomolecules", chapterName = "Biomolekul", subjectName = "Chemistry",chapterNumber =4),
 
             //Physics
-            AssetsClass(assetName = "Solenoid", actualAssetName = "solenoid", chapterName = "Magnetic Fields due to Electric Current", subjectName = "Physics", chapterNumber = 10),
-            AssetsClass(assetName = "Magnetic Field", actualAssetName = "magnetism", chapterName = "Magnetic Fields due to Electric Current", subjectName = "Physics", chapterNumber = 10),
+            AssetsClass(assetName = "Solenoida", actualAssetName = "solenoid", chapterName = "Elektromagnetik", subjectName = "Physics", chapterNumber = 2),
+            AssetsClass(assetName = "Medan Magnet", actualAssetName = "magnetism", chapterName = "Elektromagnetik", subjectName = "Physics", chapterNumber = 2),
 
             )
     }

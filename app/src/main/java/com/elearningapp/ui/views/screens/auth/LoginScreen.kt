@@ -149,6 +149,7 @@ fun LoginScreen(navController: NavController) {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             navController.navigate("dashboard")
+                            Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(context, "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
@@ -241,6 +242,7 @@ fun firebaseAuthWithGoogle(
         .addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 navController.navigate("dashboard")
+                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }

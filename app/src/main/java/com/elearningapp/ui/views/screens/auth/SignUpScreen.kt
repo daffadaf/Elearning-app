@@ -119,7 +119,7 @@ fun SignUpScreen(navController: NavController) {
             elevation = ButtonDefaults.elevatedButtonElevation(12.dp) // Menambahkan shadow
 
         ) {
-            Text("Login", style = MaterialTheme.typography.labelLarge)
+            Text("Sign Up", style = MaterialTheme.typography.labelLarge)
         }
 
 
