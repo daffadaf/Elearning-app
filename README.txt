@@ -1,6 +1,5 @@
 Kelompok 7 
 
-![215766037-54403913-12c6-48a2-a58a-6090e1ea9f19](https://github.com/user-attachments/assets/96ad229a-d840-44ab-bec4-04617ed5ae92)
 
 
 Anggota:
