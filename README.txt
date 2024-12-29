@@ -26,5 +26,5 @@ Catatan Tambahan:
 
 Link Video
 
-[![Alt text](https://1.bp.blogspot.com/-Ccdn6aK9ZP4/YA8Rm2viz7I/AAAAAAAApb8/WZbaAKA6MRUE5DU96gWsu8SR9AX_mcdJQCLcBGAsYHQ/w640-h314/how-to-create-elearning-apps-best-educational-applications.jpg)](https://www.youtube.com/watch?v=grcYCXSCKHQ)
+[![Alt text](https://1.bp.blogspot.com/-Ccdn6aK9ZP4/YA8Rm2viz7I/AAAAAAAApb8/WZbaAKA6MRUE5DU96gWsu8SR9AX_mcdJQCLcBGAsYHQ/w640-h314/how-to-create-elearning-apps-best-educational-applications.jpg)(https://www.youtube.com/watch?v=grcYCXSCKHQ)
 
