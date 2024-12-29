@@ -23,6 +23,7 @@ Aplikasi Bernama Ruang Siswa. Ruang siswa adalah aplikasi E-learning inovatif ya
 4. Fitur Search Bar
 5. Tampilan UI halaman (Home, Book, Paper, About Us, halaman chapter/pembelajaran)
 6. Fitur AR Learning (untuk pembelajaran)
+7. Fitur Login dan Signin + Authentication
 
 # Catatan Tambahan:
 
