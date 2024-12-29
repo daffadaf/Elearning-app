@@ -246,7 +246,7 @@ fun AboutUsScreen(navController: NavController) {
                 // Logout Button
                 Button(
                     onClick = {
-                        navController.navigate("login") { // Navigasi ke halaman login
+                        navController.navigate("login_screen") { // Navigasi ke halaman login
                             popUpTo(0)
                         }
                     },
