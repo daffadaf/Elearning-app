@@ -35,5 +35,5 @@ Aplikasi Bernama Ruang Siswa. Ruang siswa adalah aplikasi E-learning inovatif ya
 
 [![Watch the video](https://img.youtube.com/vi/grcYCXSCKHQ/maxresdefault.jpg)](https://youtu.be/grcYCXSCKHQ)
 
-### [Watch this video on YouTube](https://youtu.be/grcYCXSCKHQ)
+### [Video Demo](https://youtu.be/grcYCXSCKHQ)
 
