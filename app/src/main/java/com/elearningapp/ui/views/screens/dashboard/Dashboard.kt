@@ -53,7 +53,6 @@ fun Dashboard(navController: NavController) {
     )
 }
 
-// Top Bar
 @Composable
 fun TopBar() {
     Row(
@@ -64,7 +63,7 @@ fun TopBar() {
             .background(Color.White)
     ) {
         IconButton(
-            onClick = { /* Handle sidebar action */ },
+            onClick = {},
             modifier = Modifier.padding(top = 5.dp, start = 15.dp, bottom = 5.dp)
         ) {
             Image(
@@ -85,7 +84,6 @@ fun TopBar() {
     }
 }
 
-// Bottom Navigation Bar
 @Composable
 fun BottomNavigationBar(selectedTab: Int, navController: NavController, onTabSelected: (Int) -> Unit) {
     BottomNavigation(
@@ -133,7 +131,6 @@ fun BottomNavigationBar(selectedTab: Int, navController: NavController, onTabSel
     }
 }
 
-// Dashboard Content
 @Composable
 fun Content(navController: NavController) {
     val scrollState = rememberScrollState()
@@ -143,7 +140,6 @@ fun Content(navController: NavController) {
             .fillMaxSize()
     ) {
         Spacer(modifier = Modifier.height(5.dp))
-        // Add your custom composables here
         SearchBar(navController)
         CourseList(navController)
 

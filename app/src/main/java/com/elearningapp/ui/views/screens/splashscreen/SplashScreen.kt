@@ -35,14 +35,14 @@ import kotlinx.coroutines.launch
 fun SplashScreen(navController: NavHostController) {
     val scope = rememberCoroutineScope()
     val scale = remember { Animatable(0f) }
-    val offsetY = remember { Animatable(1000f) } // Initial offset for text animation
+    val offsetY = remember { Animatable(1000f) }
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
             targetValue = 1f,
             animationSpec = tween(
                 durationMillis = 2000,
-                easing = { it } // Linear interpolation
+                easing = { it }
             )
         )
         scope.launch {
@@ -50,11 +50,11 @@ fun SplashScreen(navController: NavHostController) {
                 targetValue = 0f,
                 animationSpec = tween(
                     durationMillis = 1000,
-                    easing = { it } // Linear interpolation
+                    easing = { it }
                 )
             )
         }
-        delay(2000L) // Wait for 2 seconds
+        delay(2000L)
         navController.navigate("login_screen") {
             popUpTo("splash_screen") { inclusive = true }
         }
@@ -71,7 +71,7 @@ fun SplashScreen(navController: NavHostController) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ruangsiswa), // Replace with your image
+                painter = painterResource(id = R.drawable.ruangsiswa),
                 contentDescription = "Splash Image",
                 modifier = Modifier
                     .size(200.dp)

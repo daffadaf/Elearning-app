@@ -124,9 +124,9 @@ fun LoginScreen(navController: NavController) {
                     checked = rememberMe,
                     onCheckedChange = { rememberMe = it },
                     colors = CheckboxDefaults.colors(
-                        checkedColor = Color.Blue, // Warna kotak saat checkbox dicentang
-                        uncheckedColor = Color.Gray, // Warna kotak saat checkbox tidak dicentang
-                        checkmarkColor = Color.White // Warna centang di dalam kotak
+                        checkedColor = Color.Blue,
+                        uncheckedColor = Color.Gray,
+                        checkmarkColor = Color.White
                     )
                 )
                 Text("Remember Me", style = MaterialTheme.typography.bodyMedium)
@@ -136,7 +136,7 @@ fun LoginScreen(navController: NavController) {
                 "Forgot Password?",
                 color = lightBlue,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.clickable { /* Handle Forgot Password */ }
+                modifier = Modifier.clickable {}
             )
         }
 
@@ -158,19 +158,17 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = lightBlue), // Warna background tombol
-            elevation = ButtonDefaults.elevatedButtonElevation(8.dp) // Menambahkan shadow
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
         ) {
             Text(
                 "Login",
-                style = MaterialTheme.typography.labelLarge.copy(color = Color.White) // Warna teks putih
+                style = MaterialTheme.typography.labelLarge.copy(color = Color.White)
             )
         }
 
-
         Spacer(Modifier.height(16.dp))
 
-        // Divider with "Or"
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -188,23 +186,21 @@ fun LoginScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = Color.White), // Warna background tombol putih
-            elevation = ButtonDefaults.elevatedButtonElevation(8.dp) // Menambahkan shadow
+            colors = ButtonDefaults.buttonColors(containerColor = Color.White),
+            elevation = ButtonDefaults.elevatedButtonElevation(8.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.google),
                 contentDescription = "Google Icon",
-                modifier = Modifier.size(24.dp), // Sesuaikan ukuran jika diperlukan
-                tint = Color.Unspecified // Memastikan warna asli ikon tidak diubah
+                modifier = Modifier.size(24.dp),
+                tint = Color.Unspecified
             )
             Spacer(Modifier.width(8.dp))
             Text(
                 "Continue with Google",
-                style = MaterialTheme.typography.labelLarge.copy(color = Color.Black) // Warna teks hitam
+                style = MaterialTheme.typography.labelLarge.copy(color = Color.Black)
             )
         }
-
-
 
         Spacer(Modifier.height(24.dp))
 

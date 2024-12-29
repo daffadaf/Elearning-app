@@ -76,7 +76,7 @@ fun SearchBar(navController: NavController) {
                 onValueChange = { searchText = it },
                 modifier = Modifier
                     .weight(1f)
-                    .background(Color.White), // Set background color to white
+                    .background(Color.White),
                 placeholder = {
                     Text(
                         "Search topics",
@@ -84,16 +84,15 @@ fun SearchBar(navController: NavController) {
                         fontSize = 18.sp
                     )
                 },
-                singleLine = true, // Ensure single line input
+                singleLine = true,
                 colors = TextFieldDefaults.textFieldColors(
                     focusedTextColor = Color.Black,
                     containerColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent, // Remove bottom line when focused
-                    unfocusedIndicatorColor = Color.Transparent // Remove bottom line when unfocused
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 )
 
             )
-
             Text(
                 text = "Search  ",
                 style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Medium),

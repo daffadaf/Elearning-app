@@ -39,12 +39,11 @@ fun CourseList(navController: NavController) {
     LaunchedEffect(Unit) {
         while (true) {
             coroutineScope.launch {
-                // Calculate the next index to scroll to
                 val nextIndex = (currentIndex + 1) % imageResources.size
                 lazyListState.animateScrollToItem(nextIndex)
                 currentIndex = nextIndex
             }
-            delay(3000) // Adjust the delay to control the speed of scrolling (e.g., 3000 ms = 3 seconds)
+            delay(3000)
         }
     }
     LazyRow(state = lazyListState, modifier = Modifier.padding(start = 6.dp)) {
@@ -56,15 +55,15 @@ fun CourseList(navController: NavController) {
                     .fillMaxWidth()
                     .clickable {
                         if(index == 0) {
-                            val subject = "Physics" // Set the subject dynamically if needed
+                            val subject = "Physics"
                             navController.navigate("lessons/$subject")
                         }
                         else if(index == 1) {
-                            val subject = "Biology" // Set the subject dynamically if needed
+                            val subject = "Biology"
                             navController.navigate("lessons/$subject")
                         }
                         else if(index == 2) {
-                            val subject = "Chemistry" // Set the subject dynamically if needed
+                            val subject = "Chemistry"
                             navController.navigate("lessons/$subject")
                         }
                         },

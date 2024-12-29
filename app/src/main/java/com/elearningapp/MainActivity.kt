@@ -51,7 +51,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance()
 
         setContent {
@@ -81,11 +80,9 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable("popular_lessons") {
-                        // Content of your main screen
                         PopularLessons(navController)
                     }
                     composable("ar_assets") {
-                        // Content of your main screen
                         ARModelList(navController)
                     }
                     composable("ar_screen/{asset}") { backStackEntry ->
@@ -113,14 +110,13 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     composable("books") {
-                        // Content of your main screen
                         Books(navController)
                     }
                     composable("about_us") {
-                        AboutUsScreen(navController) // Mengoper navController ke AboutUsScreen
+                        AboutUsScreen(navController)
                     }
                     composable("lessonForm") {
-                        MyApp()  // Panggil halaman LessonForm
+                        MyApp()
                     }
                 }
             }
@@ -128,7 +124,6 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startGoogleSignIn() {
-        // Configure Google Sign-In
         val options = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()

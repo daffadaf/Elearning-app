@@ -42,7 +42,6 @@ fun LessonList(lesson: String,navController: NavController) {
     var lessons by remember { mutableStateOf<List<Lesson>>(emptyList()) }
     val viewModel: DashboardViewModel = viewModel()
 
-    // Fetch physics lessons when the composable is first launched
     LaunchedEffect(Unit) {
         viewModel.fetchLessons(subjectName = lesson,
             onLessonsFetched = { allLessons ->
@@ -94,7 +93,6 @@ fun LessonList(lesson: String,navController: NavController) {
                         .height(200.dp)
                 )
             }
-
             LazyColumn(
                 modifier = Modifier
                     .padding(top = 20.dp, bottom = 16.dp)

@@ -59,15 +59,12 @@ fun CourseCard(navController: NavController) {
                         .height(290.dp)
                         .clickable {
                             if(index == 0) {
-
                                 val lesson=viewModel.rotationalDynamicsLesson.value
                                 val links = lesson.videoLinks.joinToString(",") { URLEncoder.encode(it, StandardCharsets.UTF_8.toString()) }
                                 val chapter=lesson.lessonName
                                 val subject=lesson.subjectName
                                 val chapterNumber= lesson.chapterNumber
-
                                 navController.navigate("video_lessons/${links}/${chapter}/$subject/$chapterNumber")
-
                             }
                             else if(index == 1) {
                                 val lesson=viewModel.biotechnologyLesson.value
@@ -75,7 +72,6 @@ fun CourseCard(navController: NavController) {
                                 val chapter=lesson.lessonName
                                 val subject=lesson.subjectName
                                 val chapterNumber= lesson.chapterNumber
-
                                 navController.navigate("video_lessons/${links}/${chapter}/$subject/$chapterNumber")
                             }
                             else if(index == 2) {
@@ -84,7 +80,6 @@ fun CourseCard(navController: NavController) {
                                 val chapter=lesson.lessonName
                                 val subject=lesson.subjectName
                                 val chapterNumber= lesson.chapterNumber
-
                                 navController.navigate("video_lessons/${links}/${chapter}/$subject/$chapterNumber")
                             }
                         }
@@ -123,9 +118,8 @@ fun CourseCard(navController: NavController) {
                         )
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-
-                            ) {
-
+                            )
+                        {
                             Text(
                                 text = "Duration: ${course.duration}",
                                 style = TextStyle(fontWeight = FontWeight.Medium, color = Color.Gray)

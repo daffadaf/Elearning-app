@@ -34,7 +34,6 @@ fun PopularLessons(navController: NavController) {
     var lessons by remember { mutableStateOf<List<Lesson>>(emptyList()) }
     val viewModel: DashboardViewModel = viewModel()
 
-    // Fetch physics lessons when the composable is first launched
     LaunchedEffect(Unit) {
         viewModel.fetchPopularLessons (
             onLessonsFetched = { allLessons ->

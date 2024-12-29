@@ -30,7 +30,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-// Data class to represent your data model
+// Data class Lesson
 data class Lesson(
     val subjectName: String,
     val lessonName: String,
@@ -182,7 +182,6 @@ fun LessonForm(
             Text("Add Video Link")
         }
 
-
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
@@ -241,14 +240,12 @@ fun LessonForm(
                 )
             }
         }
-
         Text(
             text = "Image",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
             modifier = Modifier.padding(bottom = 8.dp)
         )
-
         Button(
             onClick = { launcher.launch("image/*") },
             modifier = Modifier.align(Alignment.End),
@@ -257,16 +254,13 @@ fun LessonForm(
         ) {
             Text("Pick Image")
         }
-
         Spacer(modifier = Modifier.height(16.dp))
-
         Text(
             text = "Submit Update Lesson",
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
             modifier = Modifier.padding(bottom = 8.dp)
         )
-
         Button(
             onClick = {
                 imageUri?.let { uri ->

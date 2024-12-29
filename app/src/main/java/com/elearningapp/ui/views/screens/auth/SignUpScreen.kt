@@ -115,8 +115,8 @@ fun SignUpScreen(navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = lightBlue), // Warna background tombol
-            elevation = ButtonDefaults.elevatedButtonElevation(12.dp) // Menambahkan shadow
+            colors = ButtonDefaults.buttonColors(containerColor = lightBlue),
+            elevation = ButtonDefaults.elevatedButtonElevation(12.dp)
 
         ) {
             Text("Sign Up", style = MaterialTheme.typography.labelLarge)

@@ -112,7 +112,7 @@ class DashboardViewModel : ViewModel() {
     )
     val electrochemistryLesson: State<Lesson> = _electrochemistryLesson
     init {
-        fetchPersonName() // Fetch the person's name when ViewModel is initialized
+        fetchPersonName()
         fetchImageResources()
         fetchCourses()
         fetchAssessments()
@@ -120,40 +120,28 @@ class DashboardViewModel : ViewModel() {
     }
 
     private fun fetchImageResources() {
-        // Fetch image resources from API or other source
-        // For demonstration purposes, I'll use hardcoded image resources
         _imageResources.value = listOf(
             R.drawable.physics,
             R.drawable.bio,
             R.drawable.chem,
-           /* R.drawable.maths,
-            R.drawable.english*/
         )
     }
     private fun fetchCourses() {
-        // Fetch image resources from API or other source
-        // For demonstration purposes, I'll use hardcoded image resources
         _courseList.value=listOf(
             Course(R.drawable.rotationalmotion, "Rotational Dynamics", 5, "5h 11m"),
             Course(R.drawable.biotechnology, "Biotechnology", 6, "3h 33m"),
             Course(R.drawable.electrochemistry, "Electrochemisty", 6, "4h 17m"),
-            // Add more courses as needed
         )
     }
     private fun fetchAssessments() {
-        // Fetch image resources from API or other source
-        // For demonstration purposes, I'll use hardcoded image resources
         _assessmentList.value=listOf(
             Assessments(R.drawable.magneticfield, "Elektromagnetik", 10, "20m"),
             Assessments(R.drawable.respiration, "Sistem Peredaran Darah Manusia", 10, "20m"),
             Assessments(R.drawable.biomolecules, "Biomolekul", 10, "20m"),
-            // Add more courses as needed
         )
     }
 
     private fun fetchPersonName() {
-        // Perform your data fetching here to get the person's name
-        // For demonstration purposes, I'll use a hardcoded name
         _personName.value = ""
     }
 
@@ -173,13 +161,10 @@ class DashboardViewModel : ViewModel() {
                         Log.e("FetchLessons", "Failed to convert snapshot to Lesson: ${lessonSnapshot.key}")
                     }
                 }
-                // Debugging: Log all fetched lessons before sorting
                 lessons.forEach { Log.d("FetchedLesson", "Chapter: ${it.chapterNumber}, Name: ${it.lessonName}") }
 
-                // Sort lessons by chapter number
                 lessons.sortBy { it.chapterNumber.toIntOrNull() ?: Int.MAX_VALUE }
 
-                // Debugging: Log all lessons after sorting
                 lessons.forEach { Log.d("SortedLesson", "Chapter: ${it.chapterNumber}, Name: ${it.lessonName}") }
 
                 onLessonsFetched(lessons)
@@ -222,7 +207,6 @@ class DashboardViewModel : ViewModel() {
                 val database = FirebaseDatabase.getInstance()
                 val lessonsRef = database.getReference("lessons")
 
-                // Fetch data snapshot asynchronously
                 val dataSnapshot = lessonsRef.child(chapterName).get().await()
                 val imageUrl = dataSnapshot.child("imageUrl").value as? String
                 if (imageUrl != null) {
@@ -244,7 +228,6 @@ class DashboardViewModel : ViewModel() {
                 val database = FirebaseDatabase.getInstance()
                 val lessonsRef = database.getReference("lessons")
 
-                // Fetch data snapshot asynchronously
                 val dataSnapshot = lessonsRef.child(chapterName).get().await()
                 val lesson = dataSnapshot.toLesson()
                 if (lesson != null) {

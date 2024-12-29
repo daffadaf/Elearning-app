@@ -59,7 +59,6 @@ fun ARView(animation:String,asset:String) {
                     }
 
                 }
-
                 nodes.add(modelNode.value!!)
             }
         )

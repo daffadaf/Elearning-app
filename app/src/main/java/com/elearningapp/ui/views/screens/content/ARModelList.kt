@@ -47,14 +47,6 @@ fun ARModelList(navController: NavController) {
     var assets by remember { mutableStateOf<List<Lesson>>(emptyList()) }
     val viewModel: DashboardViewModel = viewModel()
     val allAssets = viewModel.assetsList
-    // Fetch physics lessons when the composable is first launched
-    /*LaunchedEffect(Unit) {
-        viewModel.fetchLessons(subjectName = lesson,
-            onLessonsFetched = { allLessons ->
-                assets = allLessons
-            }
-        )
-    }*/
 
     Box(
         modifier = Modifier.fillMaxSize()

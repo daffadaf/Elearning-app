@@ -43,7 +43,7 @@ import com.elearningapp.ui.theme.lightBlue
 
 @Composable
 fun AboutUsScreen(navController: NavController) {
-    var selectedTab by remember { mutableStateOf(3) } // Default tab for About Us is 3.
+    var selectedTab by remember { mutableStateOf(3) }
 
     Scaffold(
         bottomBar = {
@@ -64,8 +64,8 @@ fun AboutUsScreen(navController: NavController) {
                     onClick = {
                         if (selectedTab != 0) {
                             selectedTab = 0
-                            navController.navigate("dashboard") { // Correct route here
-                                popUpTo("dashboard") { inclusive = true } // Prevents multiple instances of the screen
+                            navController.navigate("dashboard") {
+                                popUpTo("dashboard") { inclusive = true }
                             }
                         }
                     }
@@ -131,7 +131,6 @@ fun AboutUsScreen(navController: NavController) {
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Text Judul
                 Text(
                     text = stringResource(id = R.string.judul),
                     style = TextStyle(
@@ -142,8 +141,6 @@ fun AboutUsScreen(navController: NavController) {
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(20.dp))
-
-                // Text Place
                 Text(
                     text = stringResource(id = R.string.place),
                     style = TextStyle(
@@ -154,8 +151,6 @@ fun AboutUsScreen(navController: NavController) {
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-
-                // Text Anggota Tim
                 Text(
                     text = stringResource(id = R.string.anggotaTim),
                     style = TextStyle(
@@ -165,8 +160,6 @@ fun AboutUsScreen(navController: NavController) {
                     textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-
-                // Row for first two images
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
@@ -180,7 +173,6 @@ fun AboutUsScreen(navController: NavController) {
                             .clip(CircleShape)
                             .background(Color.Gray)
                     )
-
                     Image(
                         painter = painterResource(id = R.drawable.genadi),
                         contentDescription = "About Us Image 2",
@@ -191,10 +183,7 @@ fun AboutUsScreen(navController: NavController) {
                             .background(Color.Gray)
                     )
                 }
-
                 Spacer(modifier = Modifier.height(8.dp))
-
-                // Row for next two images
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
@@ -221,9 +210,6 @@ fun AboutUsScreen(navController: NavController) {
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
-
-                // Button to navigate to LessonForm
-                // Button to navigate to LessonForm with icon
                 Button(
                     onClick = {
                         navController.navigate("LessonForm")
@@ -234,7 +220,6 @@ fun AboutUsScreen(navController: NavController) {
                         .height(50.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = lightBlue)
                 ) {
-                    // Add the Icon to the Button
                     Icon(
                         Icons.Filled.AdminPanelSettings,
                         contentDescription = "Halaman Admin",
@@ -242,11 +227,9 @@ fun AboutUsScreen(navController: NavController) {
                     )
                     Text(text = "Masuk Halaman Update Lesson")
                 }
-
-                // Logout Button
                 Button(
                     onClick = {
-                        navController.navigate("login_screen") { // Navigasi ke halaman login
+                        navController.navigate("login_screen") {
                             popUpTo(0)
                         }
                     },
@@ -275,5 +258,5 @@ fun AboutUsScreen(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewAboutUsScreen() {
-    AboutUsScreen(navController = rememberNavController()) // Use rememberNavController for preview
+    AboutUsScreen(navController = rememberNavController())
 }
