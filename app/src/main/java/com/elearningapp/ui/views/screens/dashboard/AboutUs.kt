@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -242,10 +243,31 @@ fun AboutUsScreen(navController: NavController) {
                     Text(text = "Masuk Halaman Update Lesson")
                 }
 
-
-                Spacer(modifier = Modifier.height(16.dp))
+                // Logout Button
+                Button(
+                    onClick = {
+                        navController.navigate("login") { // Navigasi ke halaman login
+                            popUpTo(0)
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                        .height(50.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Red)
+                ) {
+                    Icon(
+                        Icons.Filled.Logout,
+                        contentDescription = "Logout",
+                        modifier = Modifier.padding(end = 8.dp),
+                        tint = Color.White
+                    )
+                    Text(
+                        text = "Logout",
+                        style = TextStyle(color = Color.White)
+                    )
+                }
             }
-
         }
     }
 }
