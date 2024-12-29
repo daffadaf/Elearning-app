@@ -20,15 +20,14 @@ Aplikasi Bernama Ruang Siswa. Ruang siswa adalah aplikasi E-learning inovatif ya
 1. Fitur video materi pembelajaran CHAPTER (menggunakan link dari YouTube)
 2. Fitur E-Book dan Paper (menggunakan link asset dari Google Drive)
 3. Fitur Navbar (Home, Book, Paper, About Us)
-4. Fitur Search Bar (Hanya tampilan UI, belum bisa dijalankan)
+4. Fitur Search Bar
 5. Tampilan UI halaman (Home, Book, Paper, About Us, halaman chapter/pembelajaran)
-6. Fitur AR (untuk pembelajaran)
-7. Search Bar (Belum bisa digunakan)
+6. Fitur AR Learning (untuk pembelajaran)
 
 # Catatan Tambahan:
 
 1. Asset Book dan Paper diambil dari link Google Drive, Saat membuka kedua halaman tersebut user akan masuk ke Google Drive.
-2. Asset Chapter (nama Chapter, link YouTube) diambil dari firebase
+2. Asset Chapter (nama Chapter, link YouTube) diambil dari firebase Database Realtime
 
 # Link Video
 
