@@ -3,10 +3,7 @@
 
 ![215766037-54403913-12c6-48a2-a58a-6090e1ea9f19](https://github.com/user-attachments/assets/7eb90fc1-576c-44c0-924a-b7be6b46f072)
 
-# Tema Projek : E-Learning App
-
-
-# Kelompok 7 
+# Kelompok 7 (E-Learning App) 
 
 Anggota:
 1. Farrelius Kevin (81783)
