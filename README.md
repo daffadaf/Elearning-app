@@ -3,10 +3,8 @@
 
 ![215766037-54403913-12c6-48a2-a58a-6090e1ea9f19](https://github.com/user-attachments/assets/7eb90fc1-576c-44c0-924a-b7be6b46f072)
 
-
 # Tema Projek : E-Learning App
 
-![12419105](https://github.com/user-attachments/assets/9c69d29c-ddfb-443c-ba8d-2628116c2acb)
 
 # Kelompok 7 
 
