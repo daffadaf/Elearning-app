@@ -26,4 +26,5 @@ Catatan Tambahan:
 
 Link Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/grcYCXSCKHQ?si=6OQJMWd6GjkIant-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Alt text](https://1.bp.blogspot.com/-Ccdn6aK9ZP4/YA8Rm2viz7I/AAAAAAAApb8/WZbaAKA6MRUE5DU96gWsu8SR9AX_mcdJQCLcBGAsYHQ/w640-h314/how-to-create-elearning-apps-best-educational-applications.jpg)](https://www.youtube.com/watch?v=grcYCXSCKHQ)
+
