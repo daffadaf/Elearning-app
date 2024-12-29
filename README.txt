@@ -26,4 +26,4 @@ Catatan Tambahan:
 
 Link Video
 
-https://github.com/user-attachments/assets/1336a5cc-5b19-4242-899c-3c1af3a6d5cf
+https://www.youtube.com/watch?v=grcYCXSCKHQ
