@@ -1,5 +1,8 @@
 Kelompok 7 
 
+![215766037-54403913-12c6-48a2-a58a-6090e1ea9f19](https://github.com/user-attachments/assets/96ad229a-d840-44ab-bec4-04617ed5ae92)
+
+
 Anggota:
 1. Farrelius Kevin (81783)
 2. Genadi Ikhsan Jaya (80773)
